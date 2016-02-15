@@ -1,0 +1,27 @@
+---
+driver:
+  name: vagrant
+  # name: docker
+
+provisioner:
+  name: chef_zero_scheduled_task
+
+# Uncomment the following verifier to leverage Inspec instead of Busser (the
+# default verifier)
+# verifier:
+#   name: inspec
+
+platforms:
+  # - name: "ubuntu:14.04"
+  #   driver_config:
+  #     image: "ubuntu:14.04"
+  #     platform: ubuntu
+  - name: ubuntu-14.04
+  - name: AndrewDryga/vagrant-box-osx
+  - name: windows-2012r2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[settings::default]
+    attributes:
